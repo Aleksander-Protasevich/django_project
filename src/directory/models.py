@@ -4,8 +4,7 @@ from django.db import models
 
 class Author (models.Model):
     first_author = models.CharField('Первый автор', max_length=50)
-    second_author = models.CharField('Второй автор', max_length=50, blank = True)
-
+    
     def __str__(self):
         return self.first_author
 
