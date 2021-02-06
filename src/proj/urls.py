@@ -20,5 +20,6 @@ from directory import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('authors/', views.authors_list, name = 'authors_list'),
-    path('authors/<int:pk>/', views.author_detail, name = 'author_detail')
+    path('authors/<int:pk>/', views.author_detail, name = 'author_detail'),
+    path('author-delete/<int:pk>/', views.author_delete, name = 'author_delete')
 ]

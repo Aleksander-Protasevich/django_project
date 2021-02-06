@@ -14,3 +14,10 @@ def author_detail(request, pk):
     author = Author.objects.get(pk=pk)
     context = {"object" : author}
     return render(request, template_name="detail.html", context=context)
+
+def author_delete(request, pk):
+    author = Author.objects.get(pk=pk)
+    message = f'Автор {author.name} удален'
+    author.delete()
+    context = {"message" : message}
+    return render(request, template_name="delete.html", context=context)
