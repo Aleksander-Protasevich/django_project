@@ -3,11 +3,13 @@ from django.db import models
 # Create your models here.
 
 class Author (models.Model):
-    first_author = models.CharField('Первый автор', max_length=50)
+    name = models.CharField('Имя автора', max_length=50)
+    birth_date = models.CharField('Дата рождения', max_length=30, null=True)
+    country = models.CharField('Страна', max_length=30, null=True)
     
     def __str__(self):
-        return self.first_author
-
+        return self.name
+  
 class Series (models.Model):
     series = models.CharField('Серия', max_length=100)
     

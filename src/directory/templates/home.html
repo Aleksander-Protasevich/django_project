@@ -6,7 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World!!!</h1>
-    {{'The last author is'}} {{auth}} <br> 
-</body>
+    <h1>{{ pk }}</h1>
+    <table border="1">
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td>Birth date</td>
+            <td>Country</td>
+        </tr>    
+        {% for author in authors %}
+        <tr>
+            <td>{{ author.pk }}</td>
+            <td><a href="/authors/{{ author.pk }}/">{{ author.name }}</a></td>
+            <td>{{ author.birth_date }}</td>
+            <td>{{ author.country }}</td>
+        </tr>
+        {% endfor %}
+    </body>
 </html>
