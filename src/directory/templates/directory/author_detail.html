@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{message}}</h1>
+    <h1>cbv Имя автора {{object.name}}</h1>
+    {{object.birth_date| default:" - "}}</br>
+    {{object.country}}</br>
+    </br>
     <a href="{% url 'authors-list-cbv' %}">Назад к списку авторов</a>
     </body>
 </html>

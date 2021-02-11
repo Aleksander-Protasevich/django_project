@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ pk }}</h1>
+    <h1> {{ pk }}</h1>
     <table border="1">
         <tr>
             <td>#</td>
@@ -15,13 +15,16 @@
             <td>Country</td>
             <td>Operation</td>
         </tr>    
-        {% for author in authors %}
+        {% for author in object_list %}
         <tr>
             <td>{{ author.pk }}</td>
-            <td><a href="{% url 'author_detail-cbv' author.pk %}">{{ author.name }}</a></td>
+            <td><a href="{% url 'author-detail-cbv' author.pk %}">{{ author.name }}</a></td>
             <td>{{ author.birth_date }}</td>
             <td>{{ author.country }}</td> 
-            <td><a href="{% url 'author_delete-cbv' author.pk %}">Удалить</a></td>    
+            <td><a href="{% url 'author-delete-cbv' author.pk %}">Удалить</a></td>    
+            <td><a href="{% url 'author-update-cbv' author.pk %}">Обновить</a></td>   
         {% endfor %}
-    </body>
+    </table>
+    <a href = "{% url 'author-create-cbv' %}">Добавить автора</a>
+</body>
 </html>

@@ -19,7 +19,12 @@ from directory import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authors/', views.authors_list, name = 'authors_list'),
-    path('authors/<int:pk>/', views.author_detail, name = 'author_detail'),
-    path('author-delete/<int:pk>/', views.author_delete, name = 'author_delete')
+    # path('authors/', views.authors_list, name = 'authors_list'),
+    path('authors-cbv/', views.AuthorList.as_view(), name = 'authors-list-cbv'),
+    # path('authors/<int:pk>/', views.author_detail, name = 'author_detail'),
+    path('authors-cbv/<int:pk>/', views.AuthorDetail.as_view(), name = 'author-detail-cbv'),
+    # path('author-delete/<int:pk>/', views.author_delete, name = 'author_delete'),
+    path('author-delete-cbv/<int:pk>/', views.AuthorDelete.as_view(), name = 'author-delete-cbv'),
+    path('author-create-cbv/', views.AuthorCreate.as_view(), name = 'author-create-cbv'),
+    path('author-update-cbv/<int:pk>/', views.AuthorUpdate.as_view(), name = 'author-update-cbv')
 ]
