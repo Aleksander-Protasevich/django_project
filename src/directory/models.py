@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Genre (models.Model):
     name = models.CharField('Жанр', max_length=100)
     descr = models.TextField('Описание', null=True)

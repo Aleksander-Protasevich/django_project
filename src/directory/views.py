@@ -36,12 +36,12 @@ class AuthorDelete(DeleteView):
 class AuthorCreate(CreateView):
     model = Author
     success_url = '/authors/'
-    fields=('name' , 'birth_date' , 'country')
+    fields=('name' , 'genre' , 'country')
     
 class AuthorUpdate(UpdateView):
     model = Author
     success_url = '/authors/'
-    fields=('name' , 'birth_date' , 'country')   
+    fields=('name' , 'genre' , 'country')   
 
 # Seriees views
 
