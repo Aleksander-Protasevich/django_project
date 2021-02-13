@@ -80,12 +80,12 @@ class GenreDelete(DeleteView):
 class GenreCreate(CreateView):
     model = Genre
     success_url = '/genre/'
-    fields=('name', )
+    fields=('name', 'descr',)
     
 class GenreUpdate(UpdateView):
     model = Genre
     success_url = '/genre/'
-    fields=('name', )
+    fields=('name', 'descr',)
 
 # Publishing views
 
