@@ -6,10 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>cbv Имя автора {{object.name}}</h1>
-    {{object.genre| default:" - "}}</br>
-    {{object.country}}</br>
+    <h1>Серия "{{object.name}}"</h1>
+    {{object.name}}</br>
     </br>
-    <a href="{% url 'authors-list' %}">Назад к списку авторов</a>
+    <a href="{% url 'series-list' %}">Назад к списку серий</a>
     </body>
 </html>

@@ -7,14 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Удалить автора {{ author.name }} ?</h1>
+    <h1>Обновить жанр</h1>
     <form action="" method="POST">
-        {% csrf_token %} 
-        <button>Подтвердить удаление</button>
-    </form>    
+        {% csrf_token %}
+        {{form.as_table}}
+        <button>Добавить</button>
+    </form>   
 </body>
 </html>
-
-
-
-

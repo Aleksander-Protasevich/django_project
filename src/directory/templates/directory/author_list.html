@@ -6,25 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> {{ pk }}</h1>
+    <h1></h1>
     <table border="1">
         <tr>
             <td>#</td>
-            <td>Name</td>
-            <td>Birth date</td>
-            <td>Country</td>
-            <td>Operation</td>
+            <td>Имя</td>
+            <td>Жанр</td>
+            <td>Страна</td>
+            <td>Операции</td>
         </tr>    
         {% for author in object_list %}
         <tr>
             <td>{{ author.pk }}</td>
-            <td><a href="{% url 'author-detail-cbv' author.pk %}">{{ author.name }}</a></td>
-            <td>{{ author.birth_date }}</td>
+            <td><a href="{% url 'author-detail' author.pk %}">{{ author.name }}</a></td>
+            <td>{{ author.genre }}</td>
             <td>{{ author.country }}</td> 
-            <td><a href="{% url 'author-delete-cbv' author.pk %}">Удалить</a>    
-                <a href="{% url 'author-update-cbv' author.pk %}">Обновить</a></td>   
+            <td><a href="{% url 'author-delete' author.pk %}">Удалить</a>    
+                <a href="{% url 'author-update' author.pk %}">Обновить</a></td>   
         {% endfor %}
     </table>
-    <a href = "{% url 'author-create-cbv' %}">Добавить автора</a>
+    <a href = "{% url 'author-create' %}">Добавить автора</a>
 </body>
 </html>
