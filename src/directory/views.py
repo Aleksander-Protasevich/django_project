@@ -7,22 +7,6 @@ from directory.models import Author, Series, Genre, Publishing
 
 # Create your views here.
 
-# def authors_list(request):
-#     authors = Author.objects.all()
-#     context = {"authors" : authors}
-#     return render(request, template_name="home.html", context=context)
-
-# def author_detail(request, pk):
-#     author = Author.objects.get(pk=pk)
-#     context = {"object" : author}
-#     return render(request, template_name="detail.html", context=context)
-
-# def author_delete(request, pk):
-#     author = Author.objects.get(pk=pk)
-#     message = f'Автор {author.name} удален'
-#     author.delete()
-#     context = {"message" : message}
-#     return render(request, template_name="delete.html", context=context)
 class AuthorList(ListView):
     model = Author
 
@@ -102,9 +86,9 @@ class PublishingDelete(DeleteView):
 class PublishingCreate(CreateView):
     model = Publishing
     success_url = '/publishing/'
-    fields=('name', )
+    fields=('name', 'descr',)
     
 class PublishingUpdate(UpdateView):
     model = Publishing
     success_url = '/publishing/'
-    fields=('name', )
+    fields=('name', 'descr', )

@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>cbv Имя автора {{object.name}}</h1>
+{% extends "base.html" %}
+
+{% block title %} {{object.name}} {% endblock title %}
+{% block main_content %}
+
+    <h1>{{object.name}}</h1>
     {{object.genre| default:" - "}}</br>
     {{object.country}}</br>
     </br>
-    <a href="{% url 'authors-list' %}">Назад к списку авторов</a>
-    </body>
-</html>
+    <a href="{% url 'authors-list' %}" class="btn btn-outline-primary">Назад к списку авторов</a>
+{% endblock main_content %}

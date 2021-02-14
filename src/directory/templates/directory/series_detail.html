@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %} {{object.name}} {% endblock title %}
+{% block main_content %}
+
     <h1>Серия "{{object.name}}"</h1>
     {{object.name}}</br>
     </br>
-    <a href="{% url 'series-list' %}">Назад к списку серий</a>
-    </body>
-</html>
+    <a href="{% url 'series-list' %}" сlass="btn btn-outline-primary">Назад к списку серий</a>
+{% endblock main_content %}

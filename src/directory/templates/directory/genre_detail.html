@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %} {{object.name}} {% endblock title %}
+{% block main_content %}
+
     <h1>Жанр "{{object.name}}"</h1>
     {{object.descr}}</br>
     </br>
-    <a href="{% url 'genre-list' %}">Назад к списку жанров</a>
-    </body>
-</html>
+    <a href="{% url 'genre-list' %}" class="btn btn-outline-primary">Назад к списку жанров</a>
+{% endblock main_content %}

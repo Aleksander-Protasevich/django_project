@@ -25,7 +25,7 @@ class Series (models.Model):
     
 class Publishing (models.Model):
     name = models.CharField('Издательство', max_length=100)
-    descr = models.CharField('Описание', max_length=100, null=True)
+    descr = models.CharField('Страна', max_length=100, null=True)
 
     def __str__(self):
         return self.name
