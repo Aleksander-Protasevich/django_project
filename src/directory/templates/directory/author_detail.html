@@ -4,8 +4,7 @@
 {% block main_content %}
 
     <h1>{{object.name}}</h1>
-    {{object.genre| default:" - "}}</br>
-    {{object.country}}</br>
+     {{object.country}}</br>
     </br>
     <a href="{% url 'authors-list' %}" class="btn btn-outline-primary">Назад к списку авторов</a>
 {% endblock main_content %}

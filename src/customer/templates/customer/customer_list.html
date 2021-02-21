@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Профиль покупателя {% endblock title %}
+
+{% block main_content %}
+{% for object in object_list %}  
+<h1>{{object.name}}</h1>
+<p></p>
+Логин: {{object.login}}</br>
+<p></p>
+Пароль: {{object.pswrd}}</br>
+<p></p>
+e-mail: {{object.email}}</br>
+<p></p>
+Имя: {{object.name}}</br>
+<p></p>
+Фамилия: {{object.surname}}</br>
+<p></p>
+Телефон: {{object.phone}}</br>
+<p></p>
+Группа: {{object.group}}</br>
+<p></p>
+Страна: {{object.country}}</br>
+<p></p>
+Город: {{object.city}}</br>
+<p></p>
+Индекс: {{object.postcode}}</br>
+<p></p>
+Адрес: {{object.аddress}}</br>
+</br>
+
+{% endfor %}
+<a href="{% url 'customer-update' pk %}" class="btn btn-outline-primary">Редактировать</a>
+
+{% endblock main_content %}

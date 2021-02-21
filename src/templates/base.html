@@ -47,7 +47,7 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">На главную</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,13 +55,39 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'book-list' %}">Все книги</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href="#">Книги по жанрам</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link active" aria-current="page" href="#">Корзина</a>
+        </li>
+        <li>""""""""</li>
+
+
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link active btn-danger" aria-current="page" href="{% url 'logout' %}">Выход</a>
+      </li>
+
+      {% else %}
+      li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Авторизация</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Регистрация</a>
+        </li>
+      
+        {% endif %}
+      
+        <li>""""""""</li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Профиль</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Административный портал</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Справочники</a>
@@ -82,9 +108,12 @@
 </nav>
 
 <main class="container">
-
-    {% block main_content %} 
-    {% endblock main_content %}
+  {% if request.user.is_authenticated %}
+ 
+  {% endif %}
+  
+  {% block main_content %} 
+  {% endblock main_content %}
 
 </main><!-- /.container -->
 

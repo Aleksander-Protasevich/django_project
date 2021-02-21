@@ -11,7 +11,6 @@ class Genre (models.Model):
 
 class Author (models.Model):
     name = models.CharField('Имя автора', max_length=50)
-    genre = models.ManyToManyField(Genre)
     country = models.CharField('Страна', max_length=30, null=True)
     
     def __str__(self):

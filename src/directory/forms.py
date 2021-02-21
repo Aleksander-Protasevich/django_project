@@ -5,7 +5,7 @@ from . import models
 class AuthorForm(forms.ModelForm):
     class Meta:
         model = models.Author
-        fields=('name', 'genre', 'country')
+        fields=('name', 'country')
 
     # def clean(self):
     #     cleaned_data = super().clean()
@@ -23,7 +23,7 @@ class SeriesForm(forms.ModelForm):
 class GenreForm(forms.ModelForm):
     class Meta:
         model = models.Genre
-        fields=('name', 'descr',)
+        fields=('name', 'descr')
 
 class PublishingForm(forms.ModelForm):
     class Meta:

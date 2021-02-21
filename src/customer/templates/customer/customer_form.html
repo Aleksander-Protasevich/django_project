@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %} Редактирование автора {{ author.name }}{% endblock title %}
+{% block title %} Регистрация {% endblock title %}
 {% block main_content %}
-    <h1>Редактировать автора {{ author.name }}</h1>
+
+    <h1>Регистрация</h1>
     <form action="" method="POST">
         {% csrf_token %}
         {{form|crispy}}</br>

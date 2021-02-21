@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from directory.models import Author, Series, Genre, Publishing
 
@@ -13,40 +14,42 @@ class AuthorList(ListView):
 class AuthorDetail(DetailView):
     model = Author
 
-class AuthorDelete(DeleteView):
-    success_url = '/authors/'
+class AuthorDelete(LoginRequiredMixin, DeleteView):
+    success_url = reverse_lazy('authors-list')
     model = Author
 
-class AuthorCreate(CreateView):
+class AuthorCreate(LoginRequiredMixin, CreateView):
     model = Author
-    success_url = '/authors/'
-    fields=('name' , 'genre' , 'country')
+    success_url = reverse_lazy('authors-list')
+    fields=('name' , 'country')
     
-class AuthorUpdate(UpdateView):
+class AuthorUpdate(LoginRequiredMixin, UpdateView):
     model = Author
-    success_url = '/authors/'
-    fields=('name' , 'genre' , 'country')   
+    template_name = 'author_update.html'
+    success_url = reverse_lazy('authors-list')
+    fields=('name' , 'country')   
 
 # Seriees views
 
-class SeriesList(ListView):
+class SeriesList(LoginRequiredMixin, ListView):
     model = Series
 
 class SeriesDetail(DetailView):
     model = Series
 
-class SeriesDelete(DeleteView):
-    success_url = '/series/'
+class SeriesDelete(LoginRequiredMixin, DeleteView):
+    success_url = reverse_lazy('series-list')
     model = Series
 
-class SeriesCreate(CreateView):
+class SeriesCreate(LoginRequiredMixin, CreateView):
     model = Series
-    success_url = '/series/'
+    success_url = reverse_lazy('series-list')
     fields=('name', )
     
-class SeriesUpdate(UpdateView):
+class SeriesUpdate(LoginRequiredMixin, UpdateView):
     model = Series
-    success_url = '/series/'
+    template_name = 'series_update.html'
+    success_url = reverse_lazy('series-list')
     fields=('name', )
 
 # Genre views
@@ -57,18 +60,19 @@ class GenreList(ListView):
 class GenreDetail(DetailView):
     model = Genre
 
-class GenreDelete(DeleteView):
-    success_url = '/genre/'
+class GenreDelete(LoginRequiredMixin, DeleteView):
+    success_url = reverse_lazy('genre-list')
     model = Genre
 
-class GenreCreate(CreateView):
+class GenreCreate(LoginRequiredMixin, CreateView):
     model = Genre
-    success_url = '/genre/'
+    success_url = reverse_lazy('genre-list')
     fields=('name', 'descr',)
     
-class GenreUpdate(UpdateView):
+class GenreUpdate(LoginRequiredMixin, UpdateView):
     model = Genre
-    success_url = '/genre/'
+    template_name = 'genre_update.html'
+    success_url = reverse_lazy('genre-list')
     fields=('name', 'descr',)
 
 # Publishing views
@@ -79,16 +83,17 @@ class PublishingList(ListView):
 class PublishingDetail(DetailView):
     model = Publishing
 
-class PublishingDelete(DeleteView):
-    success_url = '/publishing/'
+class PublishingDelete(LoginRequiredMixin, DeleteView):
+    success_url = reverse_lazy('publishing-list')
     model = Publishing
 
-class PublishingCreate(CreateView):
+class PublishingCreate(LoginRequiredMixin, CreateView):
     model = Publishing
-    success_url = '/publishing/'
+    success_url = reverse_lazy('publishing-list')
     fields=('name', 'descr',)
     
-class PublishingUpdate(UpdateView):
+class PublishingUpdate(LoginRequiredMixin, UpdateView):
     model = Publishing
-    success_url = '/publishing/'
+    template_name = 'publishing_update.html'
+    success_url = reverse_lazy('publishing-list')
     fields=('name', 'descr', )
