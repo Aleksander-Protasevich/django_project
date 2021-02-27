@@ -7,4 +7,12 @@ from books.models import Book
 
 class BookList(ListView):
     model = Book
-    template_name = 'books_list.html'
+    template_name = 'book_list.html'
+
+class HomePage(ListView):
+    model = Book
+    template_name = 'home_page.html'
+
+class BookDetail(DetailView):
+    model = Book
+    template_name = 'book_detail.html'

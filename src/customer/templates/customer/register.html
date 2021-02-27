@@ -7,9 +7,10 @@
     <div class="col-5">
     <form action="" method="POST">
         {% csrf_token %}
-        {{user_form|crispy}}</br>
-        {{profile_form|crispy}}</br>
+        {{form|crispy}}</br>
         </div>
-        <button class="btn btn-outline-primary">Сохранить</button>
+        <button class="btn btn-outline-primary">Далее</button>
     </form>   
 {% endblock main_content %}
+
+

@@ -1,8 +1,16 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %} Профиль {% endblock title %}
 {% block main_content %}
 
-{{user.phone}}
+    <div class="col-5">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}</br>
+        </div>
+        <button class="btn btn-outline-primary">Сохранить</button>
+    </form>   
 
 
 

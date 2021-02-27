@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Все книги {% endblock title %}
+
+{% block main_content %}
+<div class="container">
+    {% for book in object_list %}
+    <div class="row">
+       
+      <div class="col-sm">
+        <img src="{{ book.image.url }}">
+      </div>
+      <div class="col-sm">
+        Название книги: {{book.name}}</br>
+        Автор: {{book.author}}</br>
+        Жанр: {{book.genre}}</br>
+        Серия: {{book.serie}}</br>
+        Год издания: {{book.year}}</br>
+        Количество страниц: {{book.page}}</br>
+        Цена (BYN): {{book.price}}</br>
+        Возрастные ограничения: {{book.age_restr}}</br>
+        </div>
+      <div class="col-sm">
+        Переплет: {{book.binding}}</br>
+        Формат: {{book.format}}</br>
+        ISBN: {{book.isbn}}</br>
+        Вес, гр: {{book.weight}}</br>
+        Издательство: {{book.publishing}}</br>
+        В наличии, шт: {{book.stock}}</br>
+        Доступно для заказа: {{book.available}}</br>
+        Рейтинг (0-10): {{book.rating}}</br>
+      </div>    
+    </div>
+    <a href="#">
+    <div class="d-grid gap-2"></br>
+        <button class="btn btn-outline-primary">Добавить в корзину</button></br>
+    </div>
+    </a>
+    {% endfor %}
+  </div>
+       
+{% endblock main_content %}
+
