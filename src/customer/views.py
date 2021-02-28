@@ -47,7 +47,7 @@ class UserRegisterView(CustomSuccessMessageMixin, CreateView):
 
     
 class LogOut(LogoutView):
-    next_page = reverse_lazy('authors-list')
+    next_page = reverse_lazy('home-page')
 
 class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
     template_name = 'profile.html'

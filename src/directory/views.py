@@ -8,10 +8,11 @@ from directory.models import Author, Series, Genre, Publishing
 from customer.views import CustomSuccessMessageMixin
 # Create your views here.
 
-class AuthorList(ListView):
+class AuthorList(LoginRequiredMixin, ListView):
     model = Author
+    paginate_by = 10
 
-class AuthorDetail(DetailView):
+class AuthorDetail(LoginRequiredMixin, DetailView):
     model = Author
 
 class AuthorDelete(LoginRequiredMixin, DeleteView):
@@ -35,8 +36,9 @@ class AuthorUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 class SeriesList(LoginRequiredMixin, ListView):
     model = Series
+    paginate_by = 10
 
-class SeriesDetail(DetailView):
+class SeriesDetail(LoginRequiredMixin, DetailView):
     model = Series
 
 class SeriesDelete(LoginRequiredMixin, DeleteView):
@@ -58,10 +60,11 @@ class SeriesUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 # Genre views
 
-class GenreList(ListView):
+class GenreList(LoginRequiredMixin, ListView):
     model = Genre
+    paginate_by = 10
 
-class GenreDetail(DetailView):
+class GenreDetail(LoginRequiredMixin, DetailView):
     model = Genre
 
 class GenreDelete(LoginRequiredMixin, DeleteView):
@@ -83,10 +86,11 @@ class GenreUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 # Publishing views
 
-class PublishingList(ListView):
+class PublishingList(LoginRequiredMixin, ListView):
     model = Publishing
+    paginate_by = 10
 
-class PublishingDetail(DetailView):
+class PublishingDetail(LoginRequiredMixin, DetailView):
     model = Publishing
 
 class PublishingDelete(LoginRequiredMixin, DeleteView):

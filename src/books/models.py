@@ -2,6 +2,7 @@ from django.db import models
 from directory.models import Author, Series, Genre, Publishing
 from PIL import Image
 
+
 BOOL_CHOICES = ((True, 'Да'), (False, 'Нет'))
 
 class Book (models.Model):
