@@ -41,7 +41,7 @@ class UserRegisterView(CustomSuccessMessageMixin, CreateView):
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
         aut_user = authenticate(username=username, password=password)
-        aut_user.groups.add(Group.objects.get(name='Managers'))
+        aut_user.groups.add(Group.objects.get(name='Admin'))
         login(self.request, aut_user)
         return form_valid
 
