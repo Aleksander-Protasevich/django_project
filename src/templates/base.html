@@ -62,9 +62,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Корзина</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Профиль</a>
+        </li>
         <li>""""""""</li>
-
-
+        <li>""""""""</li>
 
       {% if request.user.is_authenticated %}
       <li class="nav-item">
@@ -72,7 +74,7 @@
       </li>
 
       {% else %}
-      li class="nav-item">
+      <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Авторизация</a>
         </li>
         <li class="nav-item">
@@ -81,18 +83,14 @@
       
         {% endif %}
       
-        <li>""""""""</li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Профиль</a>
-        </li>
-
-        
-        
-        <li class="nav-item">
+              
+        {% for group in user.groups.all %}
+        {% if group.name == 'Managers' or group.name == 'Admins' %}
+          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Административный портал</a>
-        </li>
-        
-        <li class="nav-item dropdown">
+          </li>
+
+          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Справочники</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
             <li><a class="dropdown-item" href="{% url 'authors-list' %}">Авторы</a></li>
@@ -102,6 +100,9 @@
           </ul>
         </li>
       </ul>
+      {% endif %}
+      {% endfor %}
+
       <form action="{{current_url}}" method="get" >
         {{search_form|crispy}}
       </form>
@@ -110,9 +111,7 @@
 </nav>
 
 <main class="container">
-  {% if request.user.is_authenticated %}
  
-  {% endif %}
 
   {% block mes %} 
   {% if messages %}

@@ -54,11 +54,12 @@ class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
     form_class = RegisterUserAddForm
     success_url = reverse_lazy('home-page')
     success_msg = "Cпасибо !!! Приятных покупок !!!"
-    def form_valid(self, form):
-        form_valid = super().form_valid(form)
-        form_valid.user = self.request.user
-        form_valid.save()
-        return form_valid
+    # def form_valid(self, form):
+    #     form = super().form_valid(form)
+    #     user = form.cleaned_data["user"]
+    #     print(user)
+    #     # form.instance.user = user
+    #     # return super(UserProfileRegisterView, self).form_valid(form)
     
     
 
@@ -72,60 +73,4 @@ class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
 
 
     
-    # form_class = RegisterUserForm
-    # def get_context_data(self, **kwargs):
-    #     context = super(Profile, self).get_context_data(**kwargs)
-    #     context['username'] = self.request.user.username
-    #     return context
-
-
-# def update_profile(request):
-#     if request.method == 'POST':
-#         user_form = RegisterUserForm(request.POST, instance=request.user)
-#         profile_form = RegisterUserAddForm(request.POST, instance=request.user.profile)
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             # username = user_form.cleaned_data["username"]
-#             # password = user_form.cleaned_data["password"]
-#             # aut_user = authenticate(username=username, password=password)
-#             # aut_user.groups.add(Group.objects.get(name='Customers'))
-#             # login(request, aut_user)
-#             # messages.success(request, 'Registration complete! You may log in!')
-#             return redirect('authors-list')
-#         else:
-#             messages.error(request, ('Пожалуйста исправьте ошибки'))
-#     else:
-#         user_form = RegisterUserForm(instance=request.user)
-#         profile_form = RegisterUserAddForm(instance=request.user.profile)
-#     return render(request, 'register.html', {
-#         'user_form': user_form,
-#         'profile_form': profile_form
-#     })
-
-
-
-# def update_profile(request):
-#     if request.method == 'POST':
-#         user_form = RegisterUserForm(request.POST)
-#         profile_form = RegisterUserAddForm(request.POST)
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user = user_form.save()
-#             profile_form = profile_form.save(commit=False)
-#             profile_form.save
-#             username = user_form.cleaned_data["username"]
-#             password = user_form.cleaned_data["password"]
-#             aut_user = authenticate(username=username, password=password)
-#             aut_user.groups.add(Group.objects.get(name='Customers'))
-#             login(request, aut_user)
-#             messages.success(request, 'Registration complete! You may log in!')
-#             return redirect('authors-list')
-#         else:
-#             messages.error(request, ('Пожалуйста исправьте ошибки'))
-#     else:
-#         user_form = RegisterUserForm(request.POST)
-#         profile_form = RegisterUserAddForm(request.POST)
-#     return render(request, 'register.html', {
-#         'user_form': user_form,
-#         'profile_form': profile_form
-#     })
+   

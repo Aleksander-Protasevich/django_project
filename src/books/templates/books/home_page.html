@@ -6,7 +6,7 @@
 <h1>Новые поступления </h1></br>
 <div class="container">
     <div class="row row-cols-5">  
-        {% for book in object_list %}
+        {% for book in new_books %}
       <div class="col">
           <div class="card" style="width: 12rem;">
             <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
@@ -21,9 +21,16 @@
         </div> 
     {% endfor %}
     </div>
-   
-</div>    
-        
+</div>  
+
+<h2>Последнее обновление авторов</h2></br>
+{% for author in author_list %}
+<table>
+  <tr align="center">
+<td>{{ author.name }}</td>
+{% endfor %}
+</tr>     
+</table>   
 {% endblock main_content %}  
 
       
