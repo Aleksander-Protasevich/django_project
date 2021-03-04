@@ -21,13 +21,13 @@ class CustomSuccessMessageMixin:
         messages.success(self.request,self.success_msg)
         return super().form_valid(form)
 
-class UserLoginView(CustomSuccessMessageMixin, LoginView):
-    template_name = 'login.html'
-    form_class = AuthUserForm
-    success_url = reverse_lazy('home-page')
-    success_msg = "Пользователь авторизован"
-    def get_success_url(self):
-        return self.success_url
+# class UserLoginView(CustomSuccessMessageMixin, LoginView):
+#     template_name = 'login.html'
+#     form_class = AuthUserForm
+#     success_url = reverse_lazy('home-page')
+#     success_msg = "Пользователь авторизован"
+#     def get_success_url(self):
+#         return self.success_url
 
 
 class UserRegisterView(CustomSuccessMessageMixin, CreateView):
@@ -41,7 +41,7 @@ class UserRegisterView(CustomSuccessMessageMixin, CreateView):
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
         aut_user = authenticate(username=username, password=password)
-        aut_user.groups.add(Group.objects.get(name='Admin'))
+        aut_user.groups.add(Group.objects.get(name='Customers'))
         login(self.request, aut_user)
         return form_valid
 
