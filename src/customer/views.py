@@ -49,11 +49,11 @@ class UserRegisterView(CustomSuccessMessageMixin, CreateView):
 class LogOut(LogoutView):
     next_page = reverse_lazy('home-page')
 
-class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
-    template_name = 'profile.html'
-    form_class = RegisterUserAddForm
-    success_url = reverse_lazy('home-page')
-    success_msg = "Cпасибо !!! Приятных покупок !!!"
+# class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
+#     template_name = 'profile.html'
+#     form_class = RegisterUserAddForm
+#     success_url = reverse_lazy('home-page')
+#     success_msg = "Cпасибо !!! Приятных покупок !!!"
     # def form_valid(self, form):
     #     form = super().form_valid(form)
     #     user = form.cleaned_data["user"]
