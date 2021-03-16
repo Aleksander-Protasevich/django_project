@@ -39,12 +39,12 @@ class UserProfile (models.Model):
     def __str__(self):
         return self.user.username
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    try:
-        instance.profile.save()
-    except ObjectDoesNotExist:
-        UserProfile.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     try:
+#         instance.profile.save()
+#     except ObjectDoesNotExist:
+#         UserProfile.objects.create(user=instance)
 
 # @receiver(post_save, sender=User)
 # def save_user_profile(sender, instance, **kwargs):

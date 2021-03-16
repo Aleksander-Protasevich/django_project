@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Оформление заказа {% endblock title %}
+{% block main_content %}
+ 
+<h2>Оформление заказа </h2></br>
+
+<h4>Сумма заказа: {{object.summ}} руб.</h4></br>
+</br>
+<div class="col-5">
+<form action="" method="GET">
+    {% csrf_token %}
+        {{form|crispy}}</br>
+</form>
+</div>
+<!-- <a href="{% url 'authors-list' %}" class="btn btn-outline-primary">Назад к списку авторов</a> -->
+    
+    
+    
+    
+<!-- <button type="submit" class="btn btn-primary btn-lg" name = "btn" value = "recalculate">Назад</button> -->
+<!-- <button type="submit" class="btn btn-secondary btn-lg" name = "btn" value = "checkout">Подвердить заказ</button> -->
+   
+
+    {% endblock main_content %}

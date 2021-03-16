@@ -14,8 +14,11 @@
               <h5 class="card-title">{{book.name}}</h5>
               <p class="card-text">Жанр: {{book.genre}}</p>
               <p class="card-text">Цена (BYN): {{book.price}}</p>
-              <a href="{% url 'book-detail' book.pk %}" class="btn btn-outline-primary">Подробнее</a> 
-              
+              <!-- <a href="{% url 'book-detail' book.pk %}" class="btn btn-outline-primary">Подробнее</a>  -->
+              <div class="d-grid gap-2">
+                <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary" type="button">Подробнее</a> 
+                <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a> 
+              </div>
             </div>
           </div>
         </div> 

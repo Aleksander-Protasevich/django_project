@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} Корзина {% endblock title %}
+{% block main_content %}
+ 
+<h2>Корзина</h2></br>
+
+<form action="{% url 'cart:recalculate-cart' %}" method="GET">
+<table class="table table-dark table-striped">
+    <tr align="center">
+        <td>Наименование</td>
+        <td>Цена за ед., руб.</td>
+        <td>Количество, шт.</td>
+        <td>Итого, руб.</td>
+    </tr>    
+    {% for book_in_cart in object.goods.all %}
+    <tr align="center">
+        <td>{{ book_in_cart.book.name }}</td>
+        <td>{{ book_in_cart.book.price }}</td>
+        <td><input type="number" min=0 name="{{ book_in_cart.pk }}" value="{{ book_in_cart.quantity }}"></td>
+        <td>{{ book_in_cart.total_price }}</td>  
+    </tr>     
+    {% endfor %}
+
+    <tr> 
+        <td colspan="4"> </td>
+    </tr>
+    <tr align="center">
+        <td colspan="3" >Итого</td>
+        <td>{{object.total_summ}} руб.</td>
+    </tr>
+ </table>
+<button type="submit" class="btn btn-primary btn-lg" name = "btn" value = "recalculate">Пересчитать</button>
+<a href="{% url 'orders:checkout' %}?order={{ order.pk }}" type="submit" class="btn btn-secondary btn-lg" name = "btn" value = "checkout">Оформить заказ</a>
+</form>
+
+{% endblock main_content %}
+

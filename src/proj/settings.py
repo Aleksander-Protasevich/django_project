@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'directory',
     'customer',
     'books',
+    'cart',
+    'orders',
     'crispy_forms',
 ]
 
@@ -53,12 +55,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'proj.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'customer/templates/customer', BASE_DIR / 'directory/templates/directory', BASE_DIR / 'books/templates/books'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'customer/templates/customer', BASE_DIR / 'directory/templates/directory', BASE_DIR / 'books/templates/books',
+            BASE_DIR / 'cart/templates/cart', BASE_DIR / 'orders/templates/orders'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

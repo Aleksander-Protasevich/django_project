@@ -55,18 +55,12 @@ class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
     form_class = RegisterUserAddForm
     success_url = reverse_lazy('home-page')
     success_msg = "Cпасибо !!! Приятных покупок !!!"
-    # def form_valid(self, form):
-    #     form = super().form_valid(form)
-    #     user = form.cleaned_data["user"]
-    #     print(user)
-    #     # form.instance.user = user
-    #     # return super(UserProfileRegisterView, self).form_valid(form)
-    
-    
-
-   
-    
-
+    def form_valid(self, form):
+        object = form.save(commit=False)
+        object.user_id = self.request.user
+        object.save()
+        return super().form_valid(form)
+        
 
 
 
