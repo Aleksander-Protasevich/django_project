@@ -57,11 +57,18 @@ class UserProfileRegisterView(CustomSuccessMessageMixin, CreateView):
     success_msg = "Cпасибо !!! Приятных покупок !!!"
     def form_valid(self, form):
         object = form.save(commit=False)
-        object.user_id = self.request.user
+        object.user = self.request.user
         object.save()
         return super().form_valid(form)
         
-
+class UserProfileDetailView(DetailView):
+    model = User
+    template_name = 'profile-list.html'
+    context_object_name = 'object'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_data'] = UserProfile.objects.filter(user = self.request.user)
+        return context
 
 
 

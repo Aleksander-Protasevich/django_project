@@ -11,7 +11,6 @@ class CartList(DetailView):
   
     def get_object(self, *args, **kwargs):
         book_id = self.request.GET.get('book')
-        current_cart_pk = self.request.session['current_cart_pk']
         if not book_id:
             current_cart_pk = self.request.session['current_cart_pk']
             if current_cart_pk:
@@ -45,6 +44,7 @@ class RecalculateCart(RedirectView):
         if not current_cart_pk:
             return reverse('cart:add-to-cart')
         cart_items_from_form = self.request.GET
+        print(cart_items_from_form)
         action = utils.update_items_in_cart(cart_items_from_form, current_cart_pk)
         if action == "checkout":
             url = reverse('orders:checkout')

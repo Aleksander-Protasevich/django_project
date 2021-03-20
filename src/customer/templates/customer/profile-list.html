@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Профиль {% endblock title %}
+{% block main_content %}
+    <h2>Профиль пользователя</h2></br>
+Имя: <b>{{object.first_name}}</b></br>
+</br>
+Фамилия: <b>{{object.last_name}}</b></br>
+</br>
+    {% for data in profile_data %}
+Страна: <b>{{data.country}}</b></br>
+</br>
+Город: <b>{{data.city}}</b></br>
+</br>
+Адрес: <b>{{data.аddress}}</b></br>
+</br> 
+Индекс: <b>{{data.postcode}}</b></br>
+</br> 
+Телефон: <b>{{data.phone}}</b></br>
+    {% endfor %}
+</br>
+E-mail: <b>{{object.email}}</b></br>
+
+</br>
+<a href = "#" class="btn btn-outline-primary">Редактировать</a>
+{% endblock main_content %}

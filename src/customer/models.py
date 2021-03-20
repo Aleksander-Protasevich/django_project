@@ -33,7 +33,6 @@ class UserProfile (models.Model):
         max_length=100, 
         null=True, 
         blank = True, 
-        default = '-'
         )
 
     def __str__(self):

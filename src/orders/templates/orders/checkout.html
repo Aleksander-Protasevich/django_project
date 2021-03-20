@@ -5,21 +5,24 @@
  
 <h2>Оформление заказа </h2></br>
 
-<h4>Сумма заказа: {{object.summ}} руб.</h4></br>
+
+{% for item in object.cart.goods.all %}
+Книга <b>{{item.book.name}}</b>, {{item.quantity}} шт., {{item.price}} руб. </br>
+{% endfor %}
+</br>
+<h5>Сумма заказа: {{object.summ}} руб.</h5></br>
+
 </br>
 <div class="col-5">
-<form action="" method="GET">
+<form action="" method="POST">
     {% csrf_token %}
         {{form|crispy}}</br>
-</form>
+
 </div>
-<!-- <a href="{% url 'authors-list' %}" class="btn btn-outline-primary">Назад к списку авторов</a> -->
-    
-    
-    
-    
-<!-- <button type="submit" class="btn btn-primary btn-lg" name = "btn" value = "recalculate">Назад</button> -->
-<!-- <button type="submit" class="btn btn-secondary btn-lg" name = "btn" value = "checkout">Подвердить заказ</button> -->
+<button type="submit" class="btn btn-outline-primary" name = "btn" value = "Accept">Подтвердить заказ</button>
+</form>
+
+
    
 
-    {% endblock main_content %}
+{% endblock main_content %}

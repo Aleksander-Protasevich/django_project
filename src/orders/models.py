@@ -38,4 +38,4 @@ class Order(models.Model):
         null = False)
 
     def __str__(self):
-        return f"Заказ № (self.pk)"
+        return f"Заказ № {self.pk}"
