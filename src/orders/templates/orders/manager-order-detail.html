@@ -4,7 +4,7 @@
 {% block main_content %}
 
     <h3> Заказ № {{ object.pk }}</h3></br></br>
-
+    Заказ оформил: <b>{{object.cart.buyer.first_name}} {{object.cart.buyer.last_name}}</b></br>
     Адрес доставки: <b>{{ object.address }}</b></br>
     Телефон: <b>{{ object.address }}</b></br>
     Контактное лицо: <b>{{ object.contact }}</b></br>
@@ -16,6 +16,6 @@
 
     <h5>Сумма заказа: {{object.summ}} руб.</h5></br>
     </br>
-    <a href="{% url 'orders:customer-order-list' %}" class="btn btn-outline-primary">Назад к списку заказов</a>
+    <a href="{% url 'orders:manager-order-list' %}" class="btn btn-outline-primary">Назад к списку заказов</a>
 {% endblock main_content %}
 

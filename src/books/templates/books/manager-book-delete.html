@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Удалить карточку{% endblock title %}
+{% block main_content %}
+
+    <h1> Вы действительно хотите удалить книгу № {{object.name}} ? </br></br></h1>
+    <form action="" method="POST">
+        {% csrf_token %} 
+        <button class="btn btn-outline-primary">Подтвердить</button>
+    </form>    
+{% endblock main_content %}

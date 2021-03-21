@@ -32,7 +32,7 @@ class GoodsInCart(models.Model):
     book = models.ForeignKey(
         Book,
         verbose_name = "Книга в корзине",
-        on_delete = models.PROTECT,
+        on_delete = models.CASCADE,
     )
     quantity = models.PositiveIntegerField(
         verbose_name = "Количество",

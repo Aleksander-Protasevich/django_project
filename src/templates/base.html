@@ -110,8 +110,11 @@
         {% for group in user.groups.all %}
         {% if group.name == 'Managers' or group.name == 'Admins' %}
           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Административный портал</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'orders:manager-order-list' %}">Обработка заказов</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'manager-book-list' %}">Карточки товаров</a>
+            </li>
 
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Справочники</a>

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Все книги {% endblock title %}
+
+{% block main_content %}
+
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+    <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+    {% endif %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a>
+    </li>
+    </ul>
+</nav>
+
+<div class="d-grid gap-2"></br>
+<a href="{% url 'manager-book-create' %}" class="btn btn-primary" type="button">Добавить товар</a> </br>
+</div>
+
+<div class="container">
+    {% for book in object_list %}
+    <div class="row">
+       
+      <div class="col-sm">
+        <img src="{{ book.image.url }}">
+      </div>
+      <div class="col-sm">
+        Название книги: <b>{{book.name}}</b></br>
+        Автор: <b>{{book.author}}</b></br>
+        Жанр: <b>{{book.genre}}</b></br>
+        Серия: <b>{{book.serie}}</b></br>
+        Год издания: <b>{{book.year}}</b></br>
+        Количество страниц: <b>{{book.page}}</b></br>
+        Цена (BYN): <b>{{book.price}}</b></br>
+        Возрастные ограничения: <b>{{book.age_restr}}</b></br>
+        </div>
+      <div class="col-sm">
+        Переплет: <b>{{book.binding}}</b></br>
+        Формат: <b>{{book.format}}</b></br>
+        ISBN: <b>{{book.isbn}}</b></br>
+        Вес, гр: <b>{{book.weight}}</b></br>
+        Издательство: <b>{{book.publishing}}</b></br>
+        В наличии, шт: <b>{{book.stock}}</b></br>
+        Доступно для заказа: <b>{{book.available}}</b></br>
+        Рейтинг (0-10): <b>{{book.rating}}</b></br>
+      </div>    
+    </div>
+  </br>
+      <a href="{% url 'manager-book-update' book.pk %}" class="btn btn-outline-primary">Редактировать</a>&#160; 
+      <a href="{% url 'manager-book-delete' book.pk %}" class="btn btn-outline-primary">Удалить</a>&#160; </br>
+  </br> 
+    {% endfor %}
+  </div>
+</br>
+       
+{% endblock main_content %}
+

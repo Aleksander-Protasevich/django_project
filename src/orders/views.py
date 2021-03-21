@@ -89,11 +89,33 @@ class CustomerOrderDelete(CustomSuccessMessageMixin, LoginRequiredMixin, DeleteV
         cart_on_delete.delete()
         return HttpResponseRedirect(success_url)
 
+class ManagerOrderList(LoginRequiredMixin, ListView):
+    model = Order
+    template_name = 'manager-order-list.html'
+    
+class ManagerOrderDetail(LoginRequiredMixin, DetailView):
+    model = Order
+    template_name = 'manager-order-detail.html'
 
+class ManagerOrderUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    model = Order
+    template_name = 'manager-order-update.html'
+    success_url = reverse_lazy('orders:manager-order-list')
+    success_msg = 'Заказ успешно изменён'
+    fields = ('address', 'phone', 'contact', 'comment', 'status')
 
-
-
-
+class ManagerOrderDelete(CustomSuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    model = Order
+    template_name = 'manager-order-confirm-delete.html'
+    success_msg = 'Заказ успешно удален'
+   
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = reverse_lazy('orders:manager-order-list')
+        cart_on_delete = Cart.objects.filter(pk = self.object.pk)
+        self.object.delete()
+        cart_on_delete.delete()
+        return HttpResponseRedirect(success_url)
     
     
     
