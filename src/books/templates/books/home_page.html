@@ -3,13 +3,13 @@
 {% block title %} Все книги {% endblock title %}
 
 {% block main_content %}
-<h1>Новые поступления </h1></br>
+<h1 style="text-align:center">Новые поступления </h1></br>
 <div class="container">
     <div class="row row-cols-5">  
         {% for book in new_books %}
       <div class="col">
           
-        <div class="card" style="width: 14rem;">
+        <div class="card" style="width: 12rem;">
             <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
               <div class="card-body">
               <h5 class="card-title">{{book.name}}</h5>
@@ -26,15 +26,57 @@
     {% endfor %}
     </div>
 </div>  
+</br>
 
-<h2>Последнее обновление авторов</h2></br>
-{% for author in author_list %}
-<table>
-  <tr align="center">
-<td>{{ author.name }}</td>
-{% endfor %}
-</tr>     
-</table>   
+<h1 style="text-align:center">Лидеры продаж</h1></br>
+<div class="container">
+  <div class="row row-cols-5">  
+{% for book in bestseller_books %}
+<div class="col">
+          
+  <div class="card" style="width: 12rem;">
+      <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{book.name}}</h5>
+        <p class="card-text">Жанр: {{book.genre}}</p>
+        <p class="card-text">Цена (BYN): {{book.price}}</p>
+        <div class="d-grid gap-2">
+          <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary" type="button">Подробнее</a> 
+          <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a> 
+        </div>
+      </div>
+    </div>
+  
+  </div> 
+  {% endfor %}
+    </div>
+</div> 
+</br>
+
+<h1 style="text-align:center">АКЦИЯ -20% </h1></br>
+<div class="container">
+  <div class="row row-cols-5">  
+{% for book in sale_books %}
+<div class="col">
+          
+  <div class="card" style="width: 12rem;">
+      <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{book.name}}</h5>
+        <p class="card-text">Жанр: {{book.genre}}</p>
+        <p class="card-text">Цена (BYN): {{book.price}}</p>
+        <div class="d-grid gap-2">
+          <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary" type="button">Подробнее</a> 
+          <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a> 
+        </div>
+      </div>
+    </div>
+  
+  </div> 
+  {% endfor %}
+    </div>
+</div> 
+</br>
 {% endblock main_content %}  
 
         

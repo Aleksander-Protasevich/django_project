@@ -33,7 +33,8 @@ class HomePage(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['new_books'] = Book.objects.order_by('-created')[0:5]
-        context['author_list'] = Author.objects.all()[0:5]
+        context['bestseller_books'] = Book.objects.all().filter(status = "Бестселлер")[0:5]
+        context['sale_books'] = Book.objects.all().filter(status = "Распродажа")[0:5]
         return context
 
 
