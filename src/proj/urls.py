@@ -26,7 +26,7 @@ from orders import urls as orders_urls
 from books import views as books_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('s-admin/', admin.site.urls),
     path('', books_views.HomePage.as_view(), name = 'home-page'),
     path('directory/', include(directory_urls)),
     path('customer/', include(customer_urls)),

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import UpdateView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import UpdateView, ListView, DetailView, UpdateView, DeleteView
 from customer.views import CustomSuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from orders.models import Order
 from cart.models import Cart
 from customer.models import UserProfile
@@ -53,9 +55,49 @@ class Checkout(CustomSuccessMessageMixin, UpdateView):
     def get_success_url(self):
         self.request.session['current_cart_pk'] = None
         return self.success_url    
-       
 
 
+class CustomerOrderList(LoginRequiredMixin, ListView):
+    model = Order
+    template_name = 'customer-order-list.html'
+    def get_queryset(self):
+       current_buyer = self.request.user
+       current_buyer_carts = Cart.objects.filter(buyer = current_buyer)
+       return current_buyer_carts
+
+class CustomerOrderDetail(LoginRequiredMixin, DetailView):
+    model = Order
+    template_name = 'customer-order-detail.html'
+
+class CustomerOrderUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    model = Order
+    form_class = CheckoutForm
+    template_name = 'customer-order-update.html'
+    success_url = reverse_lazy('orders:customer-order-list')
+    success_msg = 'Заказ успешно изменён'
+    
+class CustomerOrderDelete(CustomSuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    model = Order
+    template_name = 'customer-order-confirm-delete.html'
+    success_msg = 'Заказ успешно удален'
+   
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = reverse_lazy('orders:customer-order-list')
+        cart_on_delete = Cart.objects.filter(pk = self.object.pk)
+        self.object.delete()
+        cart_on_delete.delete()
+        return HttpResponseRedirect(success_url)
+
+
+
+
+
+
+    
+    
+    
+        
 
   
                 

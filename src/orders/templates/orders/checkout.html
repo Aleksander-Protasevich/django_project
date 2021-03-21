@@ -7,7 +7,7 @@
 
 
 {% for item in object.cart.goods.all %}
-Книга <b>{{item.book.name}}</b>, {{item.quantity}} шт., {{item.price}} руб. </br>
+<b>Книга: {{item.book.name}} &#160 &#160 &#160 Количество: {{item.quantity}} шт. &#160 &#160 &#160 Цена: {{item.price}} руб.</b>  </br>
 {% endfor %}
 </br>
 <h5>Сумма заказа: {{object.summ}} руб.</h5></br>

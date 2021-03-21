@@ -5,12 +5,14 @@ from django.views.generic import DetailView, ListView, DeleteView, CreateView, U
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.models import Group
 from django.views.generic.edit import ModelFormMixin 
 from .models import UserProfile
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 
@@ -70,9 +72,30 @@ class UserProfileDetailView(DetailView):
         context['profile_data'] = UserProfile.objects.filter(user = self.request.user)
         return context
 
+class UserUpdateView(UpdateView):
+    model = User
+    template_name = 'profile-update.html'
+    success_url = reverse_lazy('add-profile-update')
+    fields = ('first_name', 'last_name', 'email')
 
+class UserAddUpdateView(CustomSuccessMessageMixin, UpdateView):
+    model = UserProfile
+    template_name = 'add-profile-update.html'
+    success_url = reverse_lazy('home-page')
+    success_msg = 'Данные профиля изменены'
+    fields = ('phone', 'country', 'city', 'postcode', 'аddress')
 
-
-
+class PasswordChangeView(CustomSuccessMessageMixin, PasswordChangeView):
+    success_url = reverse_lazy('home-page')
+    template_name = 'change-password.html'
+    success_msg = 'Пароль успешно изменён'
     
+    def password_change(request):
+        if request.method == 'POST':
+            form = PasswordChangeForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, form.user)
+
+
    

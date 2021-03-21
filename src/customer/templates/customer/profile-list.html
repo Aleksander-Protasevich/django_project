@@ -23,5 +23,6 @@
 E-mail: <b>{{object.email}}</b></br>
 
 </br>
-<a href = "#" class="btn btn-outline-primary">Редактировать</a>
+<a href="{% url 'profile-update' user.pk %}" class="btn btn-outline-primary">Редактировать</a>
+<a href="{% url 'change-password' %}" class="btn btn-outline-primary">Изменить пароль</a>
 {% endblock main_content %}

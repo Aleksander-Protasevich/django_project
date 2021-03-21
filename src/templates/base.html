@@ -59,6 +59,10 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'book-list' %}">Все книги</a>
         </li>
+
+        <li>""""""""</li>
+        <li>""""""""</li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'cart:add-to-cart' %}">Корзина</a>
         </li>
@@ -67,14 +71,27 @@
           <a class="nav-link active" aria-current="page" href="{% url 'profile-detail' user.pk %}">Профиль</a>
         </li>
         {% endif %}
-     
-        <li>""""""""</li>
+
+        {% if request.user.is_authenticated %}
+            {% for group in request.user.groups.all %}
+            {% if group.name == 'Customers' %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'orders:customer-order-list' %}">Мои заказы</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+    
+        
         <li>""""""""</li>
 
       {% if request.user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link active btn-danger" aria-current="page" href="{% url 'logout' %}">Выход</a>
       </li>
+      <li>""""""""</li>
+      <li>""""""""</li>
 
       {% else %}
       <li class="nav-item">

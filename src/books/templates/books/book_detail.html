@@ -3,6 +3,7 @@
 {% block title %} Все книги {% endblock title %}
 
 {% block main_content %}
+</br>
 <div class="container">
     <div class="row">
       <h1>{{book.name}}, {{book.author}}</h1>
@@ -10,30 +11,31 @@
         <img src="{{ book.image.url }}">
       </div>
       <div class="col-sm">
-        Жанр: {{book.genre}}</br>
-        Серия: {{book.serie}}</br>
-        Год издания: {{book.year}}</br>
-        Количество страниц: {{book.page}}</br>
-        Цена (BYN): {{book.price}}</br>
-        Возрастные ограничения: {{book.age_restr}}</br>
-        Рейтинг (0-10): {{book.rating}}</br>
+        Жанр: <b>{{book.genre}}</b></br>
+        Серия: <b>{{book.serie}}</b></br>
+        Год издания: <b>{{book.year}}</b></br>
+        Количество страниц: <b>{{book.page}}</b></br>
+        Цена (BYN): <b>{{book.price}}</b></br>
+        Возрастные ограничения: <b>{{book.age_restr}}</b></br>
+        Рейтинг (0-10): <b>{{book.rating}}</b></br>
         </div>
       <div class="col-sm">
-        Переплет: {{book.binding}}</br>
-        Формат: {{book.format}}</br>
-        ISBN: {{book.isbn}}</br>
-        Вес, гр: {{book.weight}}</br>
-        Издательство: {{book.publishing}}</br>
-        В наличии, шт: {{book.stock}}</br>
-        Доступно для заказа: {{book.available}}</br>
+        Переплет: <b>{{book.binding}}</b></br>
+        Формат: <b>{{book.format}}</b></br>
+        ISBN: <b>{{book.isbn}}</b></br>
+        Вес, гр: <b>{{book.weight}}</b></br>
+        Издательство: <b>{{book.publishing}}</b></br>
+        В наличии, шт: <b>{{book.stock}}</b></br>
+        Доступно для заказа: <b>{{book.available}}</b></br>
         </div>    
     </div>
     <a href="#">
     <div class="d-grid gap-2"></br>
-        <button class="btn btn-outline-primary">Добавить в корзину</button></br>
+      <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a></br>
     </div>
     </a>
       </div>
+    </br>
        
 {% endblock main_content %}
 

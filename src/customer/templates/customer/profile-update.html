@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Редактирование профиля {% endblock title %}
+{% block main_content %}
+
+    <div class="col-5">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}</br>
+        </div>
+        <a href="{% url 'add-profile-update' user.pk %}" class="btn btn-outline-primary">Далее</a>
+    </form>   
+
+   {% endblock main_content %}
+

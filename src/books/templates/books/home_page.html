@@ -8,19 +8,20 @@
     <div class="row row-cols-5">  
         {% for book in new_books %}
       <div class="col">
-          <div class="card" style="width: 12rem;">
+          
+        <div class="card" style="width: 14rem;">
             <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
               <div class="card-body">
               <h5 class="card-title">{{book.name}}</h5>
               <p class="card-text">Жанр: {{book.genre}}</p>
               <p class="card-text">Цена (BYN): {{book.price}}</p>
-              <!-- <a href="{% url 'book-detail' book.pk %}" class="btn btn-outline-primary">Подробнее</a>  -->
               <div class="d-grid gap-2">
                 <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary" type="button">Подробнее</a> 
                 <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a> 
               </div>
             </div>
           </div>
+        
         </div> 
     {% endfor %}
     </div>
@@ -36,9 +37,6 @@
 </table>   
 {% endblock main_content %}  
 
-      
-        
-        
         
 
 
@@ -50,23 +48,7 @@
 
 
 
-<!-- <img src="{{ book.image.url }}">
-Название книги: {{book.name}}</br>
-Цена (BYN): {{book.price}}</br>
-Автор: {{book.author}}</br>
-Серия: {{book.serie}}</br>
-Жанр: {{book.genre}}</br>
-Год издания: {{book.year}}</br>
-Количество страниц: {{book.page}}</br>
-Переплет: {{book.binding}}</br>
-Формат: {{book.format}}</br>
-ISBN: {{book.isbn}}</br>
-Вес, гр: {{book.weight}}</br>
-Возрастные ограничения: {{book.age_restr}}</br>
-Издательство: {{book.publishing}}</br>
-В наличии, шт: {{book.stock}}</br>
-Доступно для заказа: {{book.available}}</br>
-Рейтинг (0-10): {{book.rating}}</br> -->
+
 
 
 

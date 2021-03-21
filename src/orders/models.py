@@ -5,7 +5,8 @@ class Order(models.Model):
     cart = models.OneToOneField(
         Cart,
         verbose_name = 'Корзина',
-        on_delete = models.PROTECT)
+        on_delete = models.CASCADE,
+        primary_key=True)
     address = models.CharField(
         verbose_name = 'Адрес доставки',
         max_length=30,
@@ -31,6 +32,10 @@ class Order(models.Model):
         decimal_places=2,
         blank = False,
         null = False)
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name = 'Дата создания заказа',
+        null = False)
     status = models.CharField(
         verbose_name = 'Статус заказа',
         max_length=20,
@@ -38,4 +43,4 @@ class Order(models.Model):
         null = False)
 
     def __str__(self):
-        return f"Заказ № {self.pk}"
+        return f"Заказ № {self.pk} от {self.created}"
