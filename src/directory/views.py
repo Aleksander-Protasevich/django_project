@@ -109,3 +109,4 @@ class PublishingUpdate(CustomSuccessMessageMixin, LoginRequiredMixin, UpdateView
     success_url = reverse_lazy('publishing-list')
     success_msg = 'Издательство успешно отредактировано'
     fields=('name', 'descr', )
+

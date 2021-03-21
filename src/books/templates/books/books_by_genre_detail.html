@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Все книги {% endblock title %}
+
+{% block main_content %}
+
+
+<h2>Книги жанра "{{genre.name}}"</h2></br>
+<div class="container">
+  {% for book in genre_books %}
+    <div class="row">
+       
+      <div class="col-sm">
+        <img src="{{ book.image.url }}">
+      </div>
+      <div class="col-sm">
+        Название книги: <b>{{book.name}}</b></br>
+        Автор: <b>{{book.author}}</b></br>
+        Жанр: <b>{{book.genre}}</b></br>
+        Серия: <b>{{book.serie}}</b></br>
+        Год издания: <b>{{book.year}}</b></br>
+        Количество страниц: <b>{{book.page}}</b></br>
+        Цена (BYN): <b>{{book.price}}</b></br>
+        Возрастные ограничения: <b>{{book.age_restr}}</b></br>
+        </div>
+      <div class="col-sm">
+        Переплет: <b>{{book.binding}}</b></br>
+        Формат: <b>{{book.format}}</b></br>
+        ISBN: <b>{{book.isbn}}</b></br>
+        Вес, гр: <b>{{book.weight}}</b></br>
+        Издательство: <b>{{book.publishing}}</b></br>
+        В наличии, шт: <b>{{book.stock}}</b></br>
+        Доступно для заказа: <b>{{book.available}}</b></br>
+        Рейтинг (0-10): <b>{{book.rating}}</b></br>
+      </div>    
+    </div>
+    <div class="d-grid gap-2"></br>
+      <a href="{% url 'cart:add-to-cart' %}?book={{ book.pk }}" class="btn btn-primary" type="button">Добавить в корзину</a> </br>
+    </div>
+    {% endfor %}
+  </div>
+</br>
+<a href="{% url 'books_by_genre' %}" class="btn btn-outline-primary">Назад к списку жанров</a>       
+{% endblock main_content %}
+

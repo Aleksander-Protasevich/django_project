@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Все книги {% endblock title %}
+
+{% block main_content %}
+
+  {% for genre in object_list %}
+  <h3>{{genre.name}}</h3></br>
+  {{genre.descr}}</br>
+  <a class="nav-link active" aria-current="page" href="{% url 'books_by_genre-detail' genre.pk %}">Книги жанра "{{genre.name}}"</a>
+   
+{% endfor %}
+      
+{% endblock main_content %}
+

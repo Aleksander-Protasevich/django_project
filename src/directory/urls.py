@@ -24,6 +24,6 @@ urlpatterns = [
     path('publishing/<int:pk>/', views.PublishingDetail.as_view(), name = 'publishing-detail'),
     path('publishing-delete/<int:pk>/', views.PublishingDelete.as_view(), name = 'publishing-delete'),
     path('publishing-create/', views.PublishingCreate.as_view(), name = 'publishing-create'),
-    path('publishing-update/<int:pk>/', views.PublishingUpdate.as_view(), name = 'publishing-update')
-
+    path('publishing-update/<int:pk>/', views.PublishingUpdate.as_view(), name = 'publishing-update'),
+    
     ]
